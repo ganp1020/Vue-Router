@@ -39,20 +39,32 @@
         <li><a href="javascript:void(0)">关于</a></li>
     </ul>
     <div class="content">
-        233
         <!-- 内容加载区域 -->
     </div>
 </section>
 <script>
 
-var content = document.querySelector('.content')
-var header = document.querySelector('.header')
-// var text = header.innerHTML
-header.onclick=function (e) {
-    content.innerHTML =e.target.innerHTML
+    var content = document.querySelector('.content')
+    var header = document.querySelector('.header')
+    var text = 'defaultText'
+    history.replaceState(text, null, '');
+    content.innerHTML = text
+    header.onclick = function (e) {
+        if (e.target.tagName === 'A')
+            text = e.target.innerHTML
+        content.innerHTML = text
+        pushState.call(undefined, text)
+    }
+    // 监听浏览器前进后退
+    window.addEventListener('popstate', (e) => {
+        text = e.state
+        content.innerHTML = text
+    })
 
-    window.pushState()
-}
+    // 核心方法， 改变url属性
+    function pushState(text) {
+        window.history.pushState(text, null, '#/' + text)
+    }
 
 
 </script>
