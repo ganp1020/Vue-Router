@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue路由实现</title>
+    <style>
+        .wapper {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #999999;
+            margin: 0 auto;
+        }
+
+        .wapper ul {
+            height: 39px;
+            border-bottom: 1px solid #999999;
+        }
+
+        .wapper ul li {
+            padding-left: 12px;
+            display: inline-block;
+            list-style: none;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        a {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<section class="wapper">
+    <ul class="header">
+        <li><a href="javascript:void(0)">首页</a></li>
+        <li><a href="javascript:void(0)">新闻</a></li>
+        <li><a href="javascript:void(0)">关于</a></li>
+    </ul>
+    <div class="content">
+        233
+        <!-- 内容加载区域 -->
+    </div>
+</section>
+<script>
+
+var content = document.querySelector('.content')
+var header = document.querySelector('.header')
+// var text = header.innerHTML
+header.onclick=function (e) {
+    content.innerHTML =e.target.innerHTML
+
+    window.pushState()
+}
+
+
+</script>
+</body>
+</html>
